@@ -26,7 +26,7 @@ fi
 
 task="$1"
 shift
-model="${LIGHT_MODEL_AGENT_MODEL:-qwen3-coder-next}"
+model="${LIGHT_MODEL_AGENT_MODEL:-claude-haiku-5-5}"
 
 exec env -u ANTHROPIC_API_KEY \
   LIGHT_MODEL_AGENT_ACTIVE=1 \
@@ -37,5 +37,5 @@ exec env -u ANTHROPIC_API_KEY \
   ANTHROPIC_DEFAULT_SONNET_MODEL="$model" \
   ANTHROPIC_DEFAULT_HAIKU_MODEL="$model" \
   CLAUDE_CODE_SUBAGENT_MODEL="$model" \
-  CLAUDE_CODE_MAX_CONTEXT_TOKENS="${LIGHT_MODEL_AGENT_CONTEXT_TOKENS:-262144}" \
+  CLAUDE_CODE_MAX_CONTEXT_TOKENS="${LIGHT_MODEL_AGENT_CONTEXT_TOKENS:-100000}" \
   claude -p "$task" --permission-mode acceptEdits "$@"

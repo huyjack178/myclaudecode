@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 class LightModelAsker:
-    _DEFAULT_MODEL = "qwen3-coder-next"
+    _DEFAULT_MODEL = "claude-haiku-5-5"
     _DEFAULT_MAX_TOKENS = 8192
     _TIMEOUT_SECONDS = 600
 

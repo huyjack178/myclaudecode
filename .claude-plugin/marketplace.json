@@ -8,7 +8,7 @@
     {
       "name": "light-model",
       "source": "./",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Hands low-stakes coding tasks to a light model on the six2eight LLM proxy, in ask mode or agent mode."
     }
   ]

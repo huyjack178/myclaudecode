@@ -7,7 +7,7 @@ description: Use when the user asks to use the light model, "the proxy model" or
 
 ## Overview
 
-The light model runs on the deployed LiteLLM proxy. The default is `qwen3-coder-next`, at about 1/4 of Sonnet 5.5's input price and 1/8 of its output price. You stay responsible for the result: the light model drafts, you review.
+The light model runs on the deployed LiteLLM proxy. The default is `claude-haiku-5-5`, at about 1/20 of Sonnet 5.5's price ($0.10 in / $0.50 out per MTok). Above 100k prompt tokens Haiku 5.5 costs 5x more, so agent mode caps its context at 100k (`LIGHT_MODEL_AGENT_CONTEXT_TOKENS`) and you should keep ask-mode attachments well under that. You stay responsible for the result: the light model drafts, you review.
 
 The scripts read `LIGHT_MODEL_PROXY_URL` and `LIGHT_MODEL_PROXY_KEY` from the environment, or from `~/.config/llm-proxy/light_model.env`. If a script exits 2 saying they are unset, tell the user; never ask for, read out or print the key.
 
@@ -38,4 +38,4 @@ The light model has none of your context. State the goal, the constraints (langu
 
 - Sending a task that needs judgment about this conversation, or about security, data migrations or production config. Do those yourself.
 - Forgetting to attach files in ask mode, so the light model guesses at code it never saw.
-- Trusting agent-mode output without reading the diff: the light model's tool calls through the proxy fail more often than Claude's.
+- Trusting agent-mode output without reading the diff: a light model makes more mistakes than you do, and non-Claude models (`-m` / `LIGHT_MODEL_AGENT_MODEL`) also fail tool calls more often through the proxy.

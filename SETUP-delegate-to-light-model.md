@@ -2,7 +2,7 @@
 
 Agent instructions. Paste this whole file into a Claude Code session and let the agent run it.
 
-You are setting up a Claude Code skill that lets Claude Code hand low-stakes tasks to a light model (by default `qwen3-coder-next`) through the six2eight LiteLLM gateway at `https://llm-proxy.cenario.ai`. The skill ships in the `light-model` plugin, installed from the `huyjack178/myclaudecode` GitHub repository. Follow the steps in order. Never ask the user to paste their key into the chat, and never print, echo or repeat it.
+You are setting up a Claude Code skill that lets Claude Code hand low-stakes tasks to a light model (by default `claude-haiku-5-5`) through the six2eight LiteLLM gateway at `https://llm-proxy.cenario.ai`. The skill ships in the `light-model` plugin, installed from the `huyjack178/myclaudecode` GitHub repository. Follow the steps in order. Never ask the user to paste their key into the chat, and never print, echo or repeat it.
 
 ## 1. Check the prerequisites
 
@@ -50,7 +50,7 @@ chmod 600 ~/.config/llm-proxy/light_model.env
 
 Then tell the user exactly this, and wait for them to confirm:
 
-> Open `~/.config/llm-proxy/light_model.env` in your editor, replace `PASTE_YOUR_KEY_HERE` with your personal LiteLLM virtual key, and save it. If you don't have a key, ask Jack for one: it is scoped to `qwen3-coder-next` with a spending cap. Don't paste the key into this chat.
+> Open `~/.config/llm-proxy/light_model.env` in your editor, replace `PASTE_YOUR_KEY_HERE` with your personal LiteLLM virtual key, and save it. If you don't have a key, ask Jack for one: it is scoped to `claude-haiku-5-5` with a spending cap. Don't paste the key into this chat.
 
 Do not read or print the file after the user fills it in.
 
@@ -65,7 +65,7 @@ echo "$SKILL_DIR"
 
 Run each check and report the result. Report the model list and the model's replies, never the key.
 
-1. Check which models the key can use. The expected result is a list that includes `qwen3-coder-next`:
+1. Check which models the key can use. The expected result is a list that includes `claude-haiku-5-5`:
 
    ```bash
    python3 - <<'PY'
@@ -100,7 +100,7 @@ If a check fails, use this table:
 | `SKILL_DIR` is empty | The plugin is not installed. Repeat step 2. |
 | `must be set` (exit 2) | The key file is missing, or the placeholder is still in it |
 | `HTTP 401` | The key is wrong or was revoked. Ask Jack for a new one. |
-| `HTTP 400` naming the model | The key does not allow `qwen3-coder-next`. Ask Jack to add it. |
+| `HTTP 400` naming the model | The key does not allow `claude-haiku-5-5`. Ask Jack to add it. |
 
 ## 5. Finish
 
